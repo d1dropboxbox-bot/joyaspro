@@ -1,0 +1,266 @@
+[
+  {
+    "autor": "Jiménez",
+    "real": "Kskdkslxkxlxx",
+    "cat": "COMIDA",
+    "gancho": "Ndjdjd",
+    "rating": 2,
+    "fecha": "2026-05-02T21:59:08.849Z",
+    "vistas": 2,
+    "resenas": [],
+    "foto": null,
+    "poblacion": "",
+    "id": "1777759149421"
+  },
+  {
+    "autor": "Juanjo",
+    "real": "Bar Coral",
+    "cat": "BAR/RESTAURANTE",
+    "gancho": "Está guay",
+    "rating": 5,
+    "fecha": "2026-05-02T17:58:58.753Z",
+    "vistas": 28,
+    "resenas": [
+      {
+        "autor": "Juanjo",
+        "texto": "Nnn",
+        "fecha": "2026-05-02T18:22:27.052Z"
+      }
+    ],
+    "foto": null,
+    "poblacion": "Segur de Calafell",
+    "id": "1777744738045"
+  },
+  {
+    "autor": "Marc",
+    "real": "Blade Runner",
+    "cat": "PELICULA O SERIE",
+    "gancho": "una peli legendaria futurista de siempre",
+    "rating": 5,
+    "fecha": "2026-05-02T13:56:01.418Z",
+    "vistas": 42,
+    "resenas": [
+      {
+        "autor": "JoseLu",
+        "texto": "guauu",
+        "fecha": "2026-05-02T13:56:39.591Z"
+      },
+      {
+        "autor": "JoseLu",
+        "texto": "guauu",
+        "fecha": "2026-05-02T13:56:41.500Z"
+      },
+      {
+        "autor": "JoseLu",
+        "texto": "guauu",
+        "fecha": "2026-05-02T13:56:45.012Z"
+      },
+      {
+        "autor": "JoseLu",
+        "texto": "dfsdsf",
+        "fecha": "2026-05-02T13:58:26.558Z"
+      },
+      {
+        "autor": "JoseLu",
+        "texto": "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn",
+        "fecha": "2026-05-02T17:16:13.926Z"
+      },
+      {
+        "autor": "Marc",
+        "texto": "dsds",
+        "fecha": "2026-05-02T17:21:21.233Z"
+      },
+      {
+        "autor": "Marc",
+        "texto": "dsa",
+        "fecha": "2026-05-02T17:57:39.488Z"
+      }
+    ],
+    "foto": null,
+    "poblacion": "",
+    "id": "1777730161455"
+  },
+  {
+    "autor": "Marc",
+    "real": "Talaia del arcipreste",
+    "cat": "LUGAR",
+    "gancho": "Kaksknsnnsm",
+    "rating": 5,
+    "fecha": "2026-05-01T23:53:05.368Z",
+    "vistas": 15,
+    "resenas": [
+      {
+        "autor": "Marc",
+        "texto": "Ik",
+        "fecha": "2026-05-02T00:10:07.265Z"
+      },
+      {
+        "autor": "Marc",
+        "texto": "xcd",
+        "fecha": "2026-05-02T17:33:21.029Z"
+      },
+      {
+        "autor": "Juanjo",
+        "texto": "Jjjj",
+        "fecha": "2026-05-02T18:23:38.085Z"
+      },
+      {
+        "autor": "Marc",
+        "texto": "Nbb",
+        "fecha": "2026-05-02T21:54:51.525Z"
+      }
+    ],
+    "foto": null,
+    "poblacion": "Mataró",
+    "id": "1777679584501"
+  },
+  {
+    "autor": "Marc",
+    "real": "El planeta de los simios",
+    "cat": "PELICULA O SERIE",
+    "gancho": "Bbnn",
+    "rating": 5,
+    "fecha": "2026-05-01T23:52:24.889Z",
+    "vistas": 11,
+    "resenas": [
+      {
+        "autor": "Juanjo",
+        "texto": "Jjnn",
+        "fecha": "2026-05-02T18:23:45.861Z"
+      }
+    ],
+    "foto": null,
+    "poblacion": "",
+    "id": "1777679544041"
+  },
+  {
+    "autor": "Marc",
+    "real": "Extremoduro",
+    "cat": "MUSICA",
+    "gancho": "Kskaksm",
+    "rating": 5,
+    "fecha": "2026-04-29T19:30:50.522Z",
+    "vistas": 18,
+    "resenas": [
+      {
+        "autor": "Marc",
+        "texto": "Ss",
+        "fecha": "2026-04-29T19:45:13.183Z"
+      },
+      {
+        "autor": "Marc",
+        "texto": "NNsns",
+        "fecha": "2026-04-29T19:49:00.608Z"
+      },
+      {
+        "autor": "Marc",
+        "texto": "Jsjs",
+        "fecha": "2026-04-29T19:52:15.794Z"
+      },
+      {
+        "autor": "Marc",
+        "texto": "Jsjw",
+        "fecha": "2026-04-29T19:54:48.845Z"
+      },
+      {
+        "autor": "Marc",
+        "texto": "Hhh",
+        "fecha": "2026-04-29T20:04:01.292Z"
+      },
+      {
+        "autor": "Marc",
+        "texto": "Jsjwj",
+        "fecha": "2026-05-01T19:59:35.832Z"
+      },
+      {
+        "autor": "Marc",
+        "texto": "Nskdn",
+        "fecha": "2026-05-01T20:01:18.925Z"
+      },
+      {
+        "autor": "Marc",
+        "texto": "Ss",
+        "fecha": "2026-05-01T20:25:32.020Z"
+      },
+      {
+        "autor": "Pedro",
+        "texto": "sadsadasda",
+        "fecha": "2026-05-01T21:36:43.308Z"
+      }
+    ],
+    "foto": null,
+    "provincia": "",
+    "poblacion": "",
+    "id": "1777491048893"
+  },
+  {
+    "autor": "Fer1980",
+    "real": "Bananas fritas",
+    "cat": "COMIDA",
+    "gancho": "Dulces como la miel",
+    "rating": 5,
+    "fecha": "2026-04-29T18:40:57.493Z",
+    "vistas": 29,
+    "resenas": [
+      {
+        "autor": "Marc",
+        "texto": "Jdjd",
+        "fecha": "2026-04-29T19:50:48.841Z"
+      },
+      {
+        "autor": "Marc",
+        "texto": "Jsjsksnsn",
+        "fecha": "2026-04-29T19:50:54.534Z"
+      },
+      {
+        "autor": "Marc",
+        "texto": "Putasaaasaaaaaaaaaaaa",
+        "fecha": "2026-04-29T19:53:07.626Z"
+      },
+      {
+        "autor": "Marc",
+        "texto": "Kakwkwkw",
+        "fecha": "2026-05-01T18:38:03.957Z"
+      },
+      {
+        "autor": "Marc",
+        "texto": "Ddd",
+        "fecha": "2026-05-01T18:38:29.978Z"
+      }
+    ],
+    "foto": null,
+    "provincia": "",
+    "poblacion": "",
+    "id": "1777488055945"
+  },
+  {
+    "autor": "Marc",
+    "real": "Origen",
+    "cat": "PELICULA O SERIE",
+    "gancho": "Peliculón",
+    "rating": 5,
+    "fecha": "2026-04-29T18:13:37.923Z",
+    "vistas": 25,
+    "resenas": [
+      {
+        "autor": "Marc",
+        "texto": "Ksksksmsk",
+        "fecha": "2026-04-29T19:34:37.829Z"
+      },
+      {
+        "autor": "Marc",
+        "texto": "Jjj",
+        "fecha": "2026-04-29T19:37:10.746Z"
+      },
+      {
+        "autor": "Juanjo",
+        "texto": "Ikk",
+        "fecha": "2026-05-02T17:59:58.194Z"
+      }
+    ],
+    "foto": null,
+    "provincia": "",
+    "poblacion": "",
+    "id": "1777486416434"
+  }
+]

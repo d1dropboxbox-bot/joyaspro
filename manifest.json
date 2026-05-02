@@ -1,0 +1,21 @@
+{
+  "short_name": "JoyitasPro",
+  "name": "JoyitasPro - Mis lugares favoritos",
+  "icons": [
+    {
+      "src": "https://placehold.co/192x192/FF9500/FFFFFF/png?text=JP",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://placehold.co/512x512/FF9500/FFFFFF/png?text=JoyitasPro",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "./index.html",
+  "background_color": "#FFF3E6",
+  "theme_color": "#FF9500",
+  "display": "standalone",
+  "orientation": "portrait"
+}
