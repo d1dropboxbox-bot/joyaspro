@@ -1,0 +1,304 @@
+/* estilos.css */
+:root {
+    --primary: #FF9500;
+    --bg: #FFF3E6; /* Un naranja/beige mucho más suave y claro */
+    --card: #ffffff;
+    --text: #1C1C1E;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    /* Bloqueamos el scroll del body para que no haya rebotes */
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+}
+
+/* Contenedor principal para que no se vea "enorme" en PC */
+.app-container {
+    width: 100%;
+    max-width: 500px; /* Tamaño máximo de móvil */
+    background: var(--bg);
+    height: 100%;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+/* CADA PÁGINA ES LA QUE LLEVA EL SCROLL */
+.page {
+    display: none;
+    flex: 1;
+    overflow-y: auto; /* Permite scroll vertical independiente por sección */
+    -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
+    padding: 20px;
+    /* Espacio exacto al final para que la última tarjeta nunca sea tapada por el menú */
+    padding-bottom: 120px; 
+    box-sizing: border-box;
+    background: var(--bg);
+}
+
+.active { 
+    display: flex; 
+    flex-direction: column;
+    
+    /* CORRECCIÓN: Evita que capas fantasmas del fondo bloqueen clics */
+    position: relative;
+    z-index: 1001; 
+    pointer-events: auto !important;
+}
+
+/* Tarjetas del muro */
+.card-simple {
+    background: white;
+    border-radius: 16px;
+    padding: 15px;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border: 1px solid #FFCD99; /* Borde sutil a juego con el tono de fondo */
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    transition: transform 0.2s;
+    flex-shrink: 0; /* Evita que las tarjetas se compriman */
+}
+
+.card-simple:active { 
+    transform: scale(0.98); 
+}
+
+/* Menú inferior (Tab Bar) con color naranja sólido */
+nav#menu {
+    position: fixed; /* CORREGIDO: fixed para que esté siempre en pantalla */
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 500px; /* Limitado al ancho de la app móvil */
+    background: #FFE6CC; 
+    display: flex; 
+    justify-content: space-around;
+    padding-top: 10px;
+    padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid #FFCD99;
+    z-index: 1100; /* Mayor que las páginas para que no se oculte */
+    box-sizing: border-box;
+}
+
+nav#menu button {
+    background: none;
+    border: none;
+    font-size: 0.75rem; /* El texto se mantiene compacto */
+    color: #5C2D00; 
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px; /* Separación entre el icono y el texto */
+    cursor: pointer;
+    flex: 1;
+}
+
+/* Selector específico para hacer los iconos/emojis del menú más grandes */
+nav#menu button .icon {
+    font-size: 1.2rem; /* Tamaño de icono grande y cómodo para el pulgar */
+    line-height: 1;
+}
+
+/* Botón flotante (+) */
+.fab {
+    position: fixed; /* CORREGIDO: fixed para que no se mueva con el scroll */
+    bottom: calc(85px + env(safe-area-inset-bottom, 0px)); 
+    left: calc(50% + 170px); /* Posicionamiento relativo al contenedor de 500px */
+    transform: translateX(-50%);
+    background: var(--primary);
+    color: white;
+    border: none;
+    width: 56px;
+    height: 56px;
+    border-radius: 28px;
+    font-size: 24px;
+    box-shadow: 0 4px 12px rgba(255, 149, 0, 0.4);
+    cursor: pointer;
+    z-index: 1200; /* Siempre por encima de todo */
+}
+
+/* Ajuste para pantallas pequeñas de móvil */
+@media (max-width: 500px) {
+    .fab {
+        left: auto;
+        right: 20px;
+        transform: none;
+    }
+}
+
+/* Inputs y botones */
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 10px;
+    border: 1px solid #FFCD99;
+    background: #ffffff;
+    box-sizing: border-box;
+}
+
+button.btn-main {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    width: 100%;
+    font-weight: bold;
+}
+
+.btn-cat {
+    background: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    white-space: nowrap; 
+    font-size: 0.85rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    cursor: pointer;
+    color: #666;
+}
+
+.btn-cat.active-cat {
+    background: var(--primary);
+    color: white;
+    font-weight: bold;
+}
+
+.sticky-header {
+    position: sticky;
+    top: -20px; /* Compensa el padding de .page */
+    background: var(--bg);
+    padding: 10px 0;
+    z-index: 10;
+    margin-top: -10px;
+}
+
+#perf-lista b {
+    font-weight: 800 !important;
+    color: #000 !important;
+    display: inline-block;
+}
+
+.scroll-x {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 5px 0;
+    scrollbar-width: none;
+}
+
+/* Ocultar la barra de scroll en el menú de categorías */
+#categorias-bar::-webkit-scrollbar { display: none; }
+
+#tarta-grafico {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 20px auto;
+    background: #ddd; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: block;
+}
+
+#tarta-leyenda {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    font-size: 0.85rem;
+    margin-top: 15px;
+}
+
+/* --- RESEÑAS ESCRITAS DEL PERFIL --- */
+.resena-perfil {
+    background: #2C2C2E !important;        
+    border-left: 4px solid var(--primary) !important; 
+    padding: 12px 16px !important;
+    border-radius: 0 12px 12px 0 !important; 
+    margin-bottom: 12px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+}
+
+.resena-perfil .texto-resena {
+    font-style: italic !important;
+    color: #FFFFFF !important;             
+    font-size: 0.85rem !important;
+    line-height: 1.4 !important;
+}
+
+.resena-perfil .autor-resena {
+    font-weight: bold !important;
+    color: var(--primary) !important;      
+    font-size: 0.75rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+/* Tarjetas exclusivas del muro (un pelín más claras que el fondo crema) */
+.card-muro {
+    background: #FFF9F5 !important;
+    border: 1px solid #FFEBD6 !important;
+    border-radius: 16px;
+    padding: 15px;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+}
+
+.card-muro:active {
+    transform: scale(0.98);
+}
+
+.fab-back {
+    position: fixed; /* CORREGIDO: fixed para mantener la misma lógica de capas */
+    bottom: calc(85px + env(safe-area-inset-bottom, 0px)) !important;
+    left: calc(50% - 210px) !important;
+    transform: translateX(-50%);
+    width: 56px !important;
+    height: 56px !important;
+    border-radius: 28px !important;
+    background-color: var(--primary) !important; 
+    color: #FFFFFF !important;
+    border: none !important;
+    box-shadow: 0 4px 14px rgba(255, 149, 0, 0.3) !important;
+    cursor: pointer !important;
+    display: none; /* Controlado por el JS */
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 1200 !important;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s ease !important;
+    -webkit-tap-highlight-color: transparent;
+    pointer-events: auto !important;
+}
+
+@media (max-width: 500px) {
+    .fab-back {
+        left: 20px !important;
+        transform: none;
+    }
+}
+
+.fab-back:active {
+    transform: scale(0.9) !important;
+    background-color: #E68600 !important; 
+}

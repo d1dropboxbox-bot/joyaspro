@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyitas App</title>
+    <link rel="stylesheet" href="estilos.css">
+<link rel="manifest" href="./manifest.json">
+<meta name="apple-mobile-web-app-status-bar-style" content="#FF9500">
+<meta name="theme-color" content="#FF9500">
+
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; background: #FF9500; position: sticky; top: 0; z-index: 1100; box-shadow: 0 2px 8px rgba(255, 149, 0, 0.25);">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <img src="diamante-oscuro.svg" alt="Logo JoyasPro" style="width: 45px; height: 45px; display: block;">
+                
+                <span style="font-family: 'Montserrat', 'Arial Black', sans-serif; font-size: 1.8rem; letter-spacing: -1px; display: flex; align-items: center;">
+                    <b style="color: #171714; font-weight: 900; text-transform: uppercase;">JOYAS</b>
+                    <span style="color: #1b1713; font-weight: 300; text-transform: uppercase; font-style: italic; letter-spacing: 0px; margin-left: 2px;">PRO</span>
+                </span>
+            </div>
+            
+            <div id="header-user-info" onclick="actualizarPerfil(window.currentUser)" style="cursor: pointer; background: rgba(255, 255, 255, 0.25); color: #FFFFFF; padding: 6px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: bold; border: 1px solid rgba(255, 255, 255, 0.4); backdrop-filter: blur(4px); display: flex; align-items: center; gap: 5px;">
+                👤 <span id="header-username" style="color: #161f94;"><b>...</b></span>
+            </div>
+        </div>
+
+        <div id="submenu-global" style="background: #FFE6CC; padding: 10px 20px; display: none; gap: 15px; border-bottom: 1px solid #FFCD99; position: sticky; top: 77px; z-index: 1090;">
+            <button onclick="navegar('page-baul')" style="background: none; border: none; font-size: 0.85rem; color: #301801; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 4px 8px;">
+                📦 Baúl
+            </button>
+            <button onclick="navegar('page-top-mes')" style="background: none; border: none; font-size: 0.85rem; color: #5C2D00; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 4px 8px; opacity: 0.8;">
+                🔥 Top Mes
+            </button>
+        </div>
+
+        <nav id="menu" class="barra-inferior" style="display:none;">
+            <button onclick="navegar('main-view')" class="nav-btn">
+                <span class="icon">🏠</span>
+                <span class="label">Muro</span>
+            </button>
+            
+            <button onclick="navegar('page-ranking'); actualizarRanking();" class="nav-btn">
+                <span class="icon">🏆</span>
+                <span class="label">Ranking</span>
+            </button>
+
+            <button onclick="actualizarPerfil(window.currentUser)" class="nav-btn">
+                <span class="icon">👤</span>
+                <span class="label">Perfil</span>
+            </button>
+        </nav>
+
+        <div id="user-selector" class="page active">
+            <h1>Joyitas 💎</h1>
+            <p style="color: #666; margin-bottom: 20px;">Comparte tus tesoros personales</p>
+            <input type="text" id="user-input" placeholder="Tu nombre...">
+            <button class="btn-main" onclick="saveUser()">ENTRAR</button>
+        </div>
+
+        <div id="main-view" class="page">
+            <div class="sticky-header">
+                <input type="text" id="buscador" placeholder="🔍 Buscar..." oninput="filtrarYBuscar()">
+                
+                <div id="categorias-bar" class="scroll-x">
+                    <button class="btn-cat active-cat" onclick="setCat('TODO')">✨ Todos</button>
+                    <button class="btn-cat" onclick="setCat('COMIDA')">🥘 Comida</button>
+                    <button class="btn-cat" onclick="setCat('BAR/RESTAURANTE')">🍴 Bar</button>
+                    <button class="btn-cat" onclick="setCat('LUGAR')">📍 Lugar</button>
+                    <button class="btn-cat" onclick="setCat('PELICULA O SERIE')">🎬 Cine</button>
+                    <button class="btn-cat" onclick="setCat('MUSICA')">🎧 Música</button>
+                </div>
+            </div>
+            <div id="feed"></div>
+            
+            <button class="fab" onclick="navegar('page-add')">+</button>
+        </div>
+
+        <div id="page-ranking" class="page">
+            <div style="padding: 20px;">
+                <h2 style="margin-bottom: 20px;">🏆 Ranking de Joyeros</h2>
+                <div id="ranking-lista"></div>
+            </div>
+        </div>
+
+        <div id="page-ver-joya" class="page">
+          
+            
+            <div id="detalle-titulo-container" style="margin-top: 15px;"></div>
+
+            <div id="det-stars-display" style="color: #FF9500; font-size: 1.2rem; margin: 10px 0;"></div>
+            
+            <div style="background: white; padding: 15px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                <p style="margin: 5px 0;"><strong>📍 Ubicación:</strong> <span id="ver-donde"></span></p>
+                <p style="margin: 5px 0;"><strong>💎 Nota del autor:</strong> <span id="ver-porque"></span></p>
+                <p id="ver-gancho" style="font-style: italic; color: #555; margin-top: 10px; border-top: 1px solid #eee; padding-top: 10px;"></p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <button class="btn-joya-accion" onclick="compartirJoya()">🔗 Compartir</button>
+                <button id="btn-borrar-joya" class="btn-joya-accion" onclick="borrarJoya()" style="color: #FF3B30;">🗑️ Borrar</button></div>
+            
+            <hr style="margin: 25px 0; border: 0; border-top: 1px solid #eee;">
+            
+            <h3>Reseñas de la comunidad</h3>
+            <div id="ver-resenas-lista" style="margin-bottom: 20px;"></div>
+            
+            <div id="nueva-resena-box" style="background: #f9f9f9; padding: 15px; border-radius: 15px;">
+                <input type="hidden" id="ver-id"> 
+                <textarea id="in-nueva-resena" placeholder="Añade tu comentario..." style="width: 100%; border-radius: 10px; padding: 10px; border: 1px solid #ddd; margin-bottom: 10px;"></textarea>
+                <button type="button" class="btn-main" onclick="enviarResena(event); return false;">Enviar Reseña</button>
+            </div>
+        </div>
+        
+        <div id="page-perfil" class="page">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <h2 id="perf-nombre" style="margin: 0;">Perfil</h2>
+                <button id="btn-logout" onclick="confirmarLogout()" style="background: #FFE5E5; color: #FF3B30; border: none; padding: 6px 12px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; cursor: pointer;">
+    CERRAR SESIÓN
+</button></div>
+            
+            <div id="perfil-stats-container" style="background: white; padding: 15px; border-radius: 18px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                <div id="tarta-grafico" style="width: 150px; height: 150px; border-radius: 50%; margin: 0 auto 15px;"></div>
+                <div id="tarta-leyenda" style="font-size: 0.85rem; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;"></div>
+            </div>
+            
+            <h3>Aportaciones</h3>
+            <div id="perf-lista"></div>
+        </div>
+
+        <div id="page-add" class="page">
+           
+            <h2>Nueva Joyita</h2>
+            
+            <label style="font-size: 0.8rem; font-weight: bold; color: #8e8e93;">¿QUÉ ES?</label>
+            <input type="text" id="in-real" placeholder="Ej: Pizza de Trufa, Atardecer...">
+            
+            <label style="font-size: 0.8rem; font-weight: bold; color: #8e8e93;">CATEGORÍA</label>
+            <select id="in-cat" onchange="gestionarCamposDinamicos()">
+                <option value="COMIDA">🥘 COMIDA</option>
+                <option value="BAR/RESTAURANTE">🍴 BAR / RESTAURANTE</option>
+                <option value="LUGAR">📍 LUGAR</option>
+                <option value="PELICULA O SERIE">🎬 CINE</option>
+                <option value="MUSICA">🎧 MÚSICA</option>
+                <option value="OTROS">💎 OTROS</option>
+            </select>
+
+            <div id="geo-container" style="display:none; margin: 15px 0; background: #f8f9fa; padding: 10px; border-radius: 10px;">
+                <select id="in-provincia" onchange="actualizarPoblaciones()" style="margin-bottom: 10px;">
+                    <option value="">Selecciona Provincia...</option>
+                    <option value="Barcelona">Barcelona</option>
+                    <option value="Tarragona">Tarragona</option>
+                    <option value="Lleida">Lleida</option>
+                    <option value="Girona">Girona</option>
+                </select>
+                <select id="in-poblacion">
+                    <option value="">Selecciona Población...</option>
+                </select>
+            </div>
+
+            <div id="camara-container" style="display:block; margin: 15px 0;">
+                <div id="preview-foto" style="width: 100%; height: 180px; background: #eee; border-radius: 12px; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 2px dashed #ccc; margin-bottom: 10px;">
+                    <span style="color: #888;">Sin foto</span>
+                </div>
+                <button type="button" class="btn-secundario" onclick="hacerFoto()" style="width: 100%; background: #007AFF; color: white; padding: 12px; border-radius: 8px; font-weight: bold; border: none;">📸 Hacer Foto / Subir</button>
+                <input type="file" id="file-input" accept="image/*" capture="environment" style="display:none;" onchange="procesarArchivo(this)">
+            </div>
+
+            <label style="font-size: 0.8rem; font-weight: bold; color: #8e8e93;">TU VALORACIÓN</label>
+            <textarea id="in-gancho" placeholder="Cuéntanos por qué es especial..."></textarea>
+            
+            <div id="star-input" style="text-align: center; margin: 15px 0;"></div>
+            
+            <button class="btn-main" onclick="guardarJoya()">PUBLICAR JOYITA</button>
+        </div>
+
+        <button id="btn-volver-atras" class="fab-back" onclick="volverAtras()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+        </button>
+
+<div id="page-confirmar" class="page">
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-height: 70vh; padding: 20px;">
+        <div style="font-size: 4rem; margin-bottom: 20px;">⚠️</div>
+        <h2 id="conf-titulo" style="margin-bottom: 10px; color: #111;">¿Estás seguro?</h2>
+        <p id="conf-mensaje" style="color: #666; margin-bottom: 30px; font-size: 1.1rem;">Esta acción no se puede deshacer.</p>
+        
+        <div style="display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 300px;">
+            <button id="btn-conf-si" class="btn-main" style="background: #FF3B30 !important; color: white; border: none; padding: 14px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem;">SÍ, BORRAR</button>
+            <button id="btn-conf-no" class="btn-secundario" onclick="volverAtras()" style="background: #E5E5EA; color: #000; border: none; padding: 14px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem;">CANCELAR</button>
+        </div>
+    </div>
+</div>
+<div id="toast" style="display: none; position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: #333; color: #fff; padding: 12px 24px; border-radius: 25px; font-size: 0.9rem; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.15); text-align: center; white-space: nowrap;"></div>
+    </div> <script src="js/api.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/perfil.js"></script>
+    <script src="js/ranking.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>
